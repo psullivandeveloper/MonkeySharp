@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkeySharp", "MonkeySharp\MonkeySharp.csproj", "{2D023152-9515-4357-A866-C432EE8FE011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkeyCore", "MonkeyCore\MonkeyCore.csproj", "{2442D88F-1BE2-421A-960D-69A2019D18AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkeyCore.Test", "MonkeyCore.Test\MonkeyCore.Test.csproj", "{FAD14606-59DE-49EB-9C4B-F2FE9DC99B97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D023152-9515-4357-A866-C432EE8FE011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D023152-9515-4357-A866-C432EE8FE011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D023152-9515-4357-A866-C432EE8FE011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D023152-9515-4357-A866-C432EE8FE011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2442D88F-1BE2-421A-960D-69A2019D18AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2442D88F-1BE2-421A-960D-69A2019D18AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2442D88F-1BE2-421A-960D-69A2019D18AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2442D88F-1BE2-421A-960D-69A2019D18AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAD14606-59DE-49EB-9C4B-F2FE9DC99B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAD14606-59DE-49EB-9C4B-F2FE9DC99B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAD14606-59DE-49EB-9C4B-F2FE9DC99B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAD14606-59DE-49EB-9C4B-F2FE9DC99B97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

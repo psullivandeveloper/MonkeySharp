@@ -18,6 +18,12 @@ public class Token
     public const string RBRACE = "}";
     public const string FUNCTION = "FUNCTION";
     public const string LET = "LET";
+    public const string BANG = "BANG";
+    public const string MINUS = "MINUS";
+    public const string SLASH = "SLASH";
+    public const string ASTERI = "ASTERIS";
+    public const string LT = "LT,";
+    public const string GT = "GT,";
 
     public Token(TokenType tokenType, string literal)
     {
@@ -43,4 +49,11 @@ public enum TokenType
     RBRACE,
     FUNCTION,
     LET,
+    IDENT,
+    BANG,
+    MINUS,
+    SLASH,
+    ASTERISK,
+    LT,
+    GT,
 }

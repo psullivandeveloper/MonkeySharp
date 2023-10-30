@@ -50,6 +50,18 @@ public class Lexer
         return this._input.Substring(position, this.position - position);
     }
 
+    public char PeekChar()
+    {
+        if (readPosition >= _input.Length)
+        {
+            return '\0';
+        }
+        else
+        {
+            return _input[readPosition];
+        }
+    }
+
     public TokenType Keywords(string identifier)
     {
         switch (identifier)
@@ -96,7 +108,16 @@ public class Lexer
         switch (this.ch)
         {
             case '=':
-                result = new Token(TokenType.ASSIGN, "=");
+                if (PeekChar() == '=')
+                {
+                    var ch = this.ch;
+                    ReadChar();
+                    result = new Token(TokenType.EQ, "==");
+                }
+                else
+                {
+                    result = new Token(TokenType.ASSIGN, "=");
+                }
                 break;
             case ';':
                 result = new Token(TokenType.SEMICOLON, ";");
@@ -120,7 +141,17 @@ public class Lexer
                 result = new Token(TokenType.PLUS, "+");
                 break;
             case '!':
-                result = new Token(TokenType.BANG, "!");
+                if (PeekChar() == '=')
+                {
+                    var ch = this.ch;
+                    ReadChar();
+                    result = new Token(TokenType.NOT_EQ, "!=");
+                }
+                else
+                {
+                    result = new Token(TokenType.BANG, "!");
+                }
+                
                 break;
             case '-':
                 result = new Token(TokenType.MINUS, "-");

@@ -24,6 +24,8 @@ public class Token
     public const string ASTERI = "ASTERIS";
     public const string LT = "LT,";
     public const string GT = "GT,";
+    public const string EQ = "==";
+    public const string NOT_EQ = "!=";
 
     public Token(TokenType tokenType, string literal)
     {
@@ -61,4 +63,6 @@ public enum TokenType
     RETURN,
     TRUE,
     FALSE,
+    NOT_EQ,
+    EQ,
 }

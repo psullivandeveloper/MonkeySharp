@@ -56,4 +56,9 @@ public enum TokenType
     ASTERISK,
     LT,
     GT,
+    IF,
+    ELSE,
+    RETURN,
+    TRUE,
+    FALSE,
 }

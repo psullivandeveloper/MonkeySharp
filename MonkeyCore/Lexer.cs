@@ -60,6 +60,20 @@ public class Lexer
             case "let":
                 return TokenType.LET;
                 break;
+            case "true":
+                return TokenType.TRUE;
+                break;
+            case "false":
+                return TokenType.FALSE;
+            case "if":
+                return TokenType.IF;
+                break;
+            case "else":
+                return TokenType.ELSE;
+                break;
+            case "return":
+                return TokenType.RETURN;
+                break;
             default:
                 return TokenType.IDENT;
         }

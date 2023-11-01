@@ -4,6 +4,7 @@
 public class ParserTests
 {
     private string input;
+    private string errorInput;
     private Dictionary<string, string> statementChecks = new Dictionary<string, string>();
     [SetUp]
     public void Setup()
@@ -13,6 +14,12 @@ public class ParserTests
                 let y = 10;
                 let foobar = 838383;
                 """;
+        errorInput = """
+                let x 5;
+                let = 10;
+                let 838383;
+                """;
+        
         /*statementChecks.Add("x", "5");
         statementChecks.Add("y", "10");
         statementChecks.Add("foobar", "838383");*/
@@ -20,6 +27,37 @@ public class ParserTests
         statementChecks.Add("x", "x");
         statementChecks.Add("y", "y");
         statementChecks.Add("foobar", "foobar");
+    }
+
+    private bool CheckParserErrors(Parser p)
+    {
+        if (p.Errors().Count == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    [Test]
+    public void TestErrorChecking()
+    {
+        var l = new Lexer(errorInput);
+        var p = new Parser(l);
+        var program = p.ParseProgram();
+        
+        Assert.That(program, Is.Not.Null);
+        Assert.That(program.Statements.Count, Is.EqualTo(0));
+        Assert.That(CheckParserErrors(p), Is.EqualTo(true));
+        Assert.That(p.Errors().Count, Is.EqualTo(3));
+
+        foreach (var statement in program.Statements)
+        {
+            var letStatement = statement as LetStatement;
+            Assert.That(letStatement.Name.Value, Is.EqualTo(statementChecks[ letStatement.Name.TokenLiteral()]));
+        }
     }
     
 
@@ -29,8 +67,10 @@ public class ParserTests
         var l = new Lexer(input);
         var p = new Parser(l);
         var program = p.ParseProgram();
+        
         Assert.That(program, Is.Not.Null);
         Assert.That(program.Statements.Count, Is.EqualTo(3));
+        Assert.That(CheckParserErrors(p), Is.EqualTo(false));
 
         foreach (var statement in program.Statements)
         {

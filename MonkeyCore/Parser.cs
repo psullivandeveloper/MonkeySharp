@@ -5,6 +5,7 @@ public class Parser
     private Lexer l;
     private Token curToken;
     private Token peekToken;
+    private List<string> errors = new List<string>();
 
     public Parser(Lexer lexer)
     {
@@ -12,6 +13,16 @@ public class Parser
         this.NextToken();
         this.NextToken();
 
+    }
+
+    public List<string> Errors()
+    {
+        return errors;
+    }
+
+    public void PeekError(TokenType tokenType)
+    {
+        errors.Add($"Expected next token to be {tokenType}, but instead got {this.peekToken.TokenType}");
     }
 
     public void NextToken()
@@ -90,6 +101,7 @@ public class Parser
         }
         else
         {
+            this.PeekError(tokenType);
             return false;
         }
     }

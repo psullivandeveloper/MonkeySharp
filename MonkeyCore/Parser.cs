@@ -50,12 +50,27 @@ public class Parser
     {
         switch(this.curToken.TokenType)
         {
+            case(TokenType.RETURN):
+                return this.ParseReturnStatement();
+                break;
             case(TokenType.LET):
                 return this.ParseLetStatement();
                 break;
             default:
                 return null;
         }
+    }
+
+    private Statement ParseReturnStatement()
+    {
+        var stmt = new ReturnStatement(this.curToken);
+        this.NextToken();
+        
+        while (!this.curTokenIs(TokenType.SEMICOLON))
+        {
+            this.NextToken();
+        }
+        return stmt;
     }
 
     private LetStatement ParseLetStatement()

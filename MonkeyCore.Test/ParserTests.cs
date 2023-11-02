@@ -1,10 +1,13 @@
-﻿namespace MonkeyCore.Test;
+﻿using Microsoft.VisualStudio.TestPlatform.TestHost;
+
+namespace MonkeyCore.Test;
 
 
 public class ParserTests
 {
     private string input;
     private string errorInput;
+    private string returnInput;
     private Dictionary<string, string> statementChecks = new Dictionary<string, string>();
     [SetUp]
     public void Setup()
@@ -19,6 +22,11 @@ public class ParserTests
                 let = 10;
                 let 838383;
                 """;
+        returnInput = """
+                      return 5;
+                      return 10;
+                      return 993322;
+                      """;
         
         /*statementChecks.Add("x", "5");
         statementChecks.Add("y", "10");
@@ -39,6 +47,23 @@ public class ParserTests
         {
             return true;
         }
+    }
+
+    [Test]
+    public void TestReturnStatement()
+    {
+        var l = new Lexer(returnInput);
+        var p = new Parser(l);
+        var program = p.ParseProgram();
+        Assert.That(program, Is.Not.Null);
+        Assert.That(program.Statements.Count, Is.EqualTo(3));
+        Assert.That(CheckParserErrors(p), Is.EqualTo(false));
+        foreach (var statement in program.Statements)
+        {
+            Assert.That(statement, Is.TypeOf<ReturnStatement>());
+            Assert.That(statement.TokenLiteral(), Is.EqualTo("return"));
+        }
+        
     }
 
     [Test]

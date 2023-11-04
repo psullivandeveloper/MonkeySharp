@@ -2,13 +2,12 @@
 
 namespace MonkeyCore;
 
-public class ReturnStatement : Statement
+public class ExpressionStatement : Statement
 {
     private Token _token;
-    private Expression ReturnValue;
-    
+    private Expression Expression;
 
-    public ReturnStatement(Token token)
+    public ExpressionStatement(Token token)
     {
         _token = token;
     }
@@ -19,14 +18,16 @@ public class ReturnStatement : Statement
 
     public override string String()
     {
-        var result = new StringBuilder();
-        result.Append($"{this.TokenLiteral()} ");
-        if (this.ReturnValue != null)
+        
+        if (this.Expression != null)
         {
-            result.Append(this.ReturnValue.String());
+            return this.Expression.String();
+
         }
 
-        return result.ToString();
+        return "";
+
+
     }
 
     public override Node StatementNode()

@@ -1,4 +1,6 @@
-﻿namespace MonkeyCore;
+﻿using System.Text;
+
+namespace MonkeyCore;
 
 public class MonkeyProgram : Node
 {
@@ -15,5 +17,16 @@ public class MonkeyProgram : Node
         {
             return "";
         }
+    }
+
+    public override string String()
+    {
+        StringBuilder result = new StringBuilder();
+        foreach (var statement in Statements)
+        {
+            result.Append($"{statement.String()}\r\n");
+        }
+
+        return result.ToString();
     }
 }

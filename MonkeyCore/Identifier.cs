@@ -15,6 +15,11 @@ public class Identifier : Expression
         return _token.Literal;
     }
 
+    public override string String()
+    {
+        return Value;
+    }
+
     public override Node ExpressionNode()
     {
         throw new NotImplementedException();

@@ -1,10 +1,12 @@
-﻿namespace MonkeyCore;
+﻿using System.Text;
+
+namespace MonkeyCore;
 
 public class LetStatement : Statement
 {
     public Token _token;
     public Identifier Name;
-    public object Expression;
+    public Expression Value;
 
     public LetStatement(Token token)
     {
@@ -16,8 +18,25 @@ public class LetStatement : Statement
         return _token.Literal;
     }
 
+    public override string String()
+    {
+        var result = new StringBuilder();
+        result.Append($"{this.TokenLiteral()} ");
+        result.Append($"{this.Name.String()} = ");
+        if (this.Value != null)
+        {
+            result.Append($"{this.Value.String()};");
+        }
+
+        return result.ToString();
+
+
+    }
+
     public override Node StatementNode()
     {
         throw new NotImplementedException();
     }
+
+    
 }
